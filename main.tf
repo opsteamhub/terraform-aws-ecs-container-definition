@@ -84,7 +84,7 @@ locals {
     memoryReservation      = var.container_memory_reservation
     cpu                    = var.container_cpu
     container_environment  = local.final_environment_vars
-    environmentFiles       = var.container_environment_files
+    environmentFiles       = var.environment_files
     secrets                = local.final_secrets_vars
     dockerLabels           = var.docker_labels
     startTimeout           = var.start_timeout
