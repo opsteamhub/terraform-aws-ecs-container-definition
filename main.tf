@@ -1,7 +1,7 @@
 locals {
   # Sort environment variables so terraform will not try to recreate on each plan/apply
-  env_vars_keys        = var.map_environment != null ? keys(var.map_environment) : var.environment != null ? [for m in var.environment : lookup(m, "name")] : []
-  env_vars_values      = var.map_environment != null ? values(var.map_environment) : var.environment != null ? [for m in var.environment : lookup(m, "value")] : []
+  env_vars_keys        = var.map_environment != null ? keys(var.map_environment) : var.container_environment != null ? [for m in var.container_environment : lookup(m, "name")] : []
+  env_vars_values      = var.map_environment != null ? values(var.map_environment) : var.container_environment != null ? [for m in var.container_environment : lookup(m, "value")] : []
   env_vars_as_map      = zipmap(local.env_vars_keys, local.env_vars_values)
   sorted_env_vars_keys = sort(local.env_vars_keys)
 
@@ -84,7 +84,7 @@ locals {
     memoryReservation      = var.container_memory_reservation
     cpu                    = var.container_cpu
     container_environment  = local.final_environment_vars
-    environmentFiles       = var.environment_files
+    environmentFiles       = var.container_environment_files
     secrets                = local.final_secrets_vars
     dockerLabels           = var.docker_labels
     startTimeout           = var.start_timeout

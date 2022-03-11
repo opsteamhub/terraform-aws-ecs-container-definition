@@ -24,7 +24,7 @@ module "this" {
 
   enabled             = var.enabled
   namespace           = var.namespace
-  environment         = var.environment
+  environment         = var.container_environment
   stage               = var.stage
   name                = var.name
   delimiter           = var.delimiter
