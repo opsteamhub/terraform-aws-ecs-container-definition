@@ -85,7 +85,7 @@ variable "working_directory" {
   default     = null
 }
 
-variable "environment_variables" {
+variable "container_environment" {
   type = list(object({
     name  = string
     value = string
